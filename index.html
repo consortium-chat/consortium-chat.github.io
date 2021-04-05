@@ -1,13 +1,70 @@
-<!doctype html>
-<html lang=en>
-
-<head>
-
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-
-<body>
-
-<main>
-<p>Under CONstruction 🙃
-</main>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The CONsortium</title>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <style>
+      h1 {
+        line-height: 1.5;
+      }
+      body {
+        margin: 0 auto;
+        background-color: snow;
+        padding: 4rem 1rem;
+        max-width: 40rem;
+        font-family: sans-serif;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+      input {
+        display: block;
+        border: 1px solid gainsboro;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.8rem;
+      }
+      button {
+        border-radius: 5px;
+        display: block;
+        font-size: medium;
+        font-weight: bold;
+        line-height: 1.5;
+        margin: 0.5rem 0;
+        padding: 0.6rem 1.2rem;
+        color: white;
+        background-color: burlywood;
+        border: 2px solid burlywood;
+        cursor: pointer;
+      }
+      #error-message {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The CONsortium</h1>
+    <form id="login">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required minlength="1">
+      <button>Enter</button>
+      <p id="error-message"></p>
+    </form>
+    <script>
+      document.forms.login.addEventListener('submit', handleLogin)
+      function handleLogin (event) {
+        event.preventDefault()
+        document.getElementById('error-message').innerText = ''
+        const timeout = 1000 + Math.floor(Math.random() * Math.random() * 5000)
+        setTimeout(handleLoginFailure, timeout)
+      }
+      function handleLoginFailure () {
+        document.getElementById('error-message').innerText = 'Password is incorrect'
+        document.forms.login.reset()
+      }
+    </script>
+  </body>
+</html>
